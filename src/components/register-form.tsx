@@ -40,7 +40,7 @@ export default function RegisterPage() {
       router.push("/login");
       toast({
         title: "Success",
-        description: "Register success",
+        description: "Register success.",
         variant: "success",
       });
     } catch (err: Error | any) {
