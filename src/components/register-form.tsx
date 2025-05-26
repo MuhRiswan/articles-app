@@ -36,7 +36,7 @@ export default function RegisterPage() {
     try {
       setLoading(true);
       setError("");
-      const res = await register(data);
+      await register(data);
       router.push("/login");
       toast({
         title: "Success",
