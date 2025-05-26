@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
+import { toast } from "@/hooks/use-toast";
 
 const schema = z.object({
   email: z.string().email(),
@@ -36,11 +37,20 @@ export default function RegisterPage() {
       setLoading(true);
       setError("");
       const res = await register(data);
-      console.log("Register success:", res);
       router.push("/login");
+      toast({
+        title: "Success",
+        description: "Register success",
+        variant: "success",
+      });
     } catch (err: Error | any) {
       console.error(err);
       setError(err.response?.data?.error?.message || "Register failed");
+      toast({
+        title: "Error",
+        description: err.response?.data?.error?.message || "Register failed",
+        variant: "error",
+      });
     } finally {
       setLoading(false);
     }

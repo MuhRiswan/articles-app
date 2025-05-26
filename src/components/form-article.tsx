@@ -89,15 +89,15 @@ export function FormArticle({ id, initialData, onSuccess }: FormArticleProps) {
       if (isEdit && id) {
         await apiUpdateArticle(id.toString(), payload);
         toast({
-          title: "Artikel berhasil diperbarui",
-          description: "Artikel telah diperbarui.",
+          title: "Article successfully updated",
+          description: "The article has been updated.",
           variant: "success",
         });
       } else {
         await apiAddArticle(payload);
         toast({
-          title: "Artikel berhasil ditambahkan",
-          description: "Artikel baru telah dibuat.",
+          title: "Article successfully added",
+          description: "A new article has been created.",
           variant: "success",
         });
       }
@@ -106,8 +106,8 @@ export function FormArticle({ id, initialData, onSuccess }: FormArticleProps) {
     } catch (error) {
       console.error("Error saving article:", error);
       toast({
-        title: "Gagal menyimpan artikel",
-        description: "Terjadi kesalahan saat menyimpan data.",
+        title: "Failed to save article",
+        description: "An error occurred while saving the data.",
         variant: "error",
       });
     } finally {

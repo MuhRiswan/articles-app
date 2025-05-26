@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAuthStore } from "@/lib/store/auth-store";
 import { setCookie } from "cookies-next";
+import { toast } from "@/hooks/use-toast";
 
 const loginSchema = z.object({
   email: z.string().email(),
@@ -44,9 +45,19 @@ export function LoginForm() {
         email: res.user.email,
       });
       router.push("/");
+      toast({
+        title: "Success",
+        description: "Login success",
+        variant: "success",
+      });
     } catch (err: Error | any) {
       console.error(err.response?.data?.error?.message || "Login failed");
       setError(err.response?.data?.error?.message || "Invalid email or password");
+      toast({
+        title: "Error",
+        description: err.response?.data?.error?.message || "Login failed",
+        variant: "error",
+      });
     } finally {
       setLoading(false);
     }
