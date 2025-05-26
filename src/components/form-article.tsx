@@ -90,7 +90,7 @@ export function FormArticle({ id, initialData, onSuccess }: FormArticleProps) {
         await apiUpdateArticle(id.toString(), payload);
         toast({
           title: "Article successfully updated",
-          description: "The article has been updated.",
+          description: "The article has been updated successfully.",
           variant: "success",
         });
       } else {
